@@ -1,12 +1,8 @@
 package com.riadsafowan.diabeticretinopathypredictor.data
 
-class Repository(private val apiService: ApiService) {
-    suspend fun predictDRStage(): Result {
-        return apiService.predictDRStage()
-    }
+class Repository(private val apiService: ApiService) : ApiCall {
+    suspend fun predictDRStage(): ApiResource<Result> = apiCall { apiService.predictDRStage() }
 
-    suspend fun ping(): Result {
-        return apiService.ping()
-    }
+    suspend fun ping(): ApiResource<Result> = apiCall { apiService.ping() }
 
 }

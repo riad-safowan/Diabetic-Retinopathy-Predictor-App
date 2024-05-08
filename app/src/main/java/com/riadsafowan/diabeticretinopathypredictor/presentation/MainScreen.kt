@@ -1,5 +1,6 @@
 package com.riadsafowan.diabeticretinopathypredictor.presentation
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -24,6 +26,13 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     val state by mainViewModel.uiState.collectAsState()
+
+    val toastMessage = mainViewModel.toastMessage.value
+
+    if (toastMessage != null) {
+        Toast.makeText(LocalContext.current, toastMessage, Toast.LENGTH_SHORT).show()
+        mainViewModel.showToast(null)
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
