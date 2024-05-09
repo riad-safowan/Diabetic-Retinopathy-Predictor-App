@@ -69,7 +69,9 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.retrofit)
+    implementation (libs.okhttp)
     implementation(libs.converter.gson)
     implementation (libs.accompanist.systemuicontroller)
+    implementation (libs.accompanist.glide)
 
 }
